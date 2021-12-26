@@ -1,0 +1,62 @@
+<div class="container">
+	<div class="section">
+			<carousel
+				[images]="imagesForSlider"
+				[objectFit]="'cover'"
+				[cellWidth]="'100%'"
+				[height]="560"
+				[autoplay]="true"
+                [autoplayInterval]="4000"
+                [transitionDuration]="1200"
+				[dots]="true"
+				[loop]="true"
+                [counter]="true"
+                [cellsToShow]="1">
+			</carousel>
+	</div>
+</div>
+<div class="events" *ngFor="let e of allevents">
+    <div class="event-card alt">
+        <div class="meta">
+            <div class="photo" style="background-image: url({{e.imageUrl}})"></div>
+            <ul class="details">
+                <li class="author">Autor: <a>{{ e.author }}</a></li>
+                <li class="date">Objavljeno: <a>{{ e.publishingDate | date: 'HH:mm' }}, {{ e.publishingDate | date: 'dd.MM.yyyy' }}</a></li>
+                <li class="tags">
+                    <ul>
+                        <li>Pravila:</li>
+                        <li><a>{{ e.ageLimit }} &nbsp;</a></li>
+                        <li *ngFor="let spec of e.specialConditions"><a>{{ spec }} &nbsp;</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="description">
+            <h2>{{ e.eventType }}</h2>
+            <h1>{{ e.title }}</h1>
+            <h2>{{ e.dateOfEvent | date: 'dd.MM.yyyy' }}, {{ e.timeOfEvent }}</h2>
+            <h3><span>{{ e.eventSpace }}</span> - {{ e.eventPlace }}</h3>
+            <p>{{e.description}}</p>
+            <p>{{ e.content }}</p>
+            <p class="read-more">
+				<button mat-icon-button>
+    				<mat-icon>favorite</mat-icon>
+  				</button>
+  				<button mat-icon-button>
+   					<mat-icon>share</mat-icon>
+ 				</button>
+            </p>
+        </div>
+    </div>
+</div>
+<mat-toolbar class="footer">
+	<div class="footer-link">
+		<a class="hide" mat-button routerLink="/">O nama</a>
+		<span class="hide">|</span>
+		<a mat-button routerLink="/">KD Srbije&reg; 2021&copy;</a>
+		<span>|</span>
+		<a class="hide" mat-button routerLink="/contact">Kontaktirajte nas</a>
+		<span class="hide">|</span>
+		<a mat-button (click)="openTerms()">Uslovi</a>
+	</div>
+</mat-toolbar>

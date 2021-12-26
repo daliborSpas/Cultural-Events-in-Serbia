@@ -1,0 +1,80 @@
+<mat-toolbar color="primary">
+  <div class="hide">
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <span>{{userData.organization}}</span>
+  </div>
+
+  <span class="spacer hide"></span>
+  <button mat-button [matMenuTriggerFor]="events">
+    <span class="name">Događaji</span>
+  </button>
+  <mat-menu #events>
+    <button mat-menu-item routerLink="/addEvent">
+      <mat-icon>post_add</mat-icon>
+      <span>Dodaj događaj</span>
+    </button>
+    <button mat-menu-item routerLink="/events">
+      <mat-icon>grading</mat-icon>
+      <span>Pregled događaja</span>
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="news">
+    <span class="name">Vesti</span>
+  </button>
+  <mat-menu #news>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>playlist_add</mat-icon>
+      <span>Dodaj vest</span>
+    </button>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>grading</mat-icon>
+      <span>Pregled vesti</span>
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="ads">
+    <span class="name">Oglasi</span>
+  </button>
+  <mat-menu #ads>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>addchart</mat-icon>
+      <span>Dodaj oglas</span>
+    </button>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>feed</mat-icon>
+      <span>Pregled oglasa</span>
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="survey">
+    <span class="name">Ankete</span>
+  </button>
+  <mat-menu #survey>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>playlist_add_circle</mat-icon>
+      <span>Dodaj anketu</span>
+    </button>
+    <button mat-menu-item routerLink="/">
+      <mat-icon>feed</mat-icon>
+      <span>Pregled anketa</span>
+    </button>
+  </mat-menu>
+  
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item routerLink="/getUserData">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>Uredi Profil</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Odjavi se</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

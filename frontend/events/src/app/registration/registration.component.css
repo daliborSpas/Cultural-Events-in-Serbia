@@ -1,0 +1,114 @@
+.registracija {
+    max-width: 800px;
+    min-width: 300px;
+    margin: 2rem auto;
+}
+
+.reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 2rem;
+    padding: 2rem 0;
+    /* background-color: rgba(95, 144, 184, 0.06); */
+    background-color: #c9e6ff;
+    margin-bottom: 0.4rem;
+}
+
+mat-card-content {
+    padding: 0 1rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+}
+
+mat-card-actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+}
+
+.span-input {
+    grid-column: span 2;
+}
+   
+.full-width {
+    width: 100%;
+}
+
+.checkbox {
+    font-weight: lighter;
+    margin-top: 0.5rem;
+}
+
+.checkErr {
+    font-size: 0.7rem;
+    margin-left: 1.5rem;
+}
+
+.request-fields {
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(2, 141, 141);
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 0.7rem;
+}
+
+mat-icon, mat-checkbox {
+    color: slateblue;
+}
+
+@media(max-width: 830px) {
+
+    .registracija {
+        max-width: 500px;
+    }
+
+    mat-card-content {
+        padding: 0 0.5rem;
+    }
+
+    .reg {
+        font-size: 1.5rem;
+        padding: 1.2rem 0;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: 10px;
+    }
+
+    mat-card-actions {
+        grid-column: span 1;
+    }
+
+    .checkbox {
+        font-size: 0.8rem;
+    }
+
+    .span-input {
+        grid-column: span 1;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}

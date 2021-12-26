@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <div class="logo">
+        <img src="/assets/logo/logo-3.png" alt="logo">
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="drawer.close()">
+        <mat-icon>home</mat-icon>
+        <span class="caption">Početna</span>
+      </a>
+      <a mat-list-item routerLink="/login" (click)="drawer.close()">
+        <mat-icon>login</mat-icon>
+        <span class="caption">Prijavi se</span>
+      </a>
+      <a mat-list-item routerLink="/register" (click)="drawer.close()">
+        <mat-icon>person_add</mat-icon>
+        <span class="caption">Registruj se</span>
+      </a>
+      <a mat-list-item routerLink="/contact" (click)="drawer.close()">
+        <mat-icon>contact_support</mat-icon>
+        <span class="caption">Kontaktirajte nas</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/organization" (click)="drawer.close()">
+        <mat-icon>assignment_ind</mat-icon>
+        <span class="caption">Organizacija</span>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button class="btn-hide" mat-icon-button routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span>Kulturni događaji</span>
+      <span class="spacer"></span>
+      <a *ngIf="!user" mat-button class="hide" routerLink="/login">Prijavi se</a>
+      <a *ngIf="!user" mat-button class="hide" routerLink="/register">Registruj se</a>
+      <a *ngIf="user" mat-button class="hide" routerLink="/organization">{{user.organization}}</a>
+      <a mat-button class="hide" routerLink="/contact">Kontaktirajte nas</a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

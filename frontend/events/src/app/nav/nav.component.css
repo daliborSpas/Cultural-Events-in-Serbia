@@ -1,0 +1,23 @@
+.mat-toolbar {
+    background-color: #92b7d8;
+    width: 80%;
+    margin: 1rem auto;
+    border-radius: 10px;
+    justify-content: space-around;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+@media (max-width: 690px) {
+    .mat-toolbar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .hide {
+        display: none;
+    }
+}

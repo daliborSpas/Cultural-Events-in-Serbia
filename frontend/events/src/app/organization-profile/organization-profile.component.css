@@ -1,0 +1,136 @@
+.container {
+	max-width: 1000px;
+    margin: 2rem auto;
+}
+
+.pageShow {
+    margin: 1rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+	border-radius: 4px;
+}
+
+.org-basic {
+	background-color: #99c6ec;
+	text-align: center;
+    border-radius: 4px;
+}
+
+.org-edit {
+	background-color: #f9feff;
+    padding: 1rem 2rem;
+}
+
+.mat-card {
+    text-align: center;
+}
+
+.avatar .mat-icon {
+    display: flex;
+    justify-content: center;
+    font-size: 10rem;
+    margin: auto;
+    color: slateblue;
+    padding-bottom: 9rem;
+    padding-top: 1rem;
+}
+
+.avatar {
+    margin-bottom: 2rem;
+}
+
+.full-width, form {
+    width: 100%;
+}
+
+.org-edit form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+
+.span-input {
+    grid-column: span 2;
+}
+
+.mat-card-actions {
+    grid-column: span 2;
+    margin-top: 0.5rem;
+}
+
+.mat-card-subtitle {
+    padding: 0.5rem 2rem;
+}
+
+.title-card {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    background-color: #99c6ec;
+    color: #fff;
+    margin-top: 0.5rem;
+}
+
+.mat-card .mat-divider-horizontal {
+    position: relative;
+    width: 80%;
+    margin: auto;
+	margin-bottom: 1rem;
+}
+
+.org-edit h2 {
+    font-weight: normal;
+}
+
+.error {
+    width: 80%;
+    margin: auto;
+}
+
+@media(max-width: 830px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+    .org-basic {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .avatar {
+        margin-bottom: 0;
+    }
+
+    .mat-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media(max-width: 610px) {
+
+    .avatar .mat-icon {
+        font-size: 8rem;
+        padding-bottom: 7rem;
+        padding-top: 0;
+    }
+
+    .mat-card-subtitle {
+        padding: 0 1rem;
+    }
+
+}
+
+@media(max-width: 540px) {
+	.org-edit form {
+		display: block;
+	}
+
+}
+

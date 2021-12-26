@@ -1,0 +1,50 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="event-card" *ngFor="let e of events">
+        <div class="meta">
+            <div class="photo" style="background-image: url({{e.imageUrl}})"></div>
+            <ul class="details">
+                <li class="author">Autor: <a>{{ e.author }}</a></li>
+                <li class="date">Objavljeno: <a>{{ e.publishingDate | date: 'HH:mm' }}, {{ e.publishingDate | date: 'dd.MM.yyyy' }}</a></li>
+                <li class="tags">
+                    <ul>
+                        <li>Pravila:</li>
+                        <li><a>{{ e.ageLimit }} &nbsp;</a></li>
+                        <li *ngFor="let spec of e.specialConditions"><a>{{ spec }} &nbsp;</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="description">
+            <h2>{{ e.eventType }}</h2>
+            <span class="visibility" *ngIf="e.visibility == 'privatno'">
+                <button mat-icon-button>
+                    <mat-icon>visibility_off</mat-icon>
+                </button>
+            </span>
+            <h1>{{ e.title }}</h1>
+            <h2>{{ e.dateOfEvent | date: 'dd.MM.yyyy' }}, {{ e.timeOfEvent }}</h2>
+            <h3><span>{{ e.eventSpace }}</span> - {{ e.eventPlace }}</h3>
+            <p>{{ e.description }}</p>
+            <p class="read-more">
+                <button mat-button routerLink='/event/{{e.id}}' (click)="goToEvent(e.id)">Nastavi čitanje</button>
+            </p>
+        </div>
+    </div>
+    <div *ngIf="events.length === 0">
+        <mat-card class="error">
+            <mat-card-subtitle>
+                <mat-card-title>Pretražujemo bazu, molimo sačekajte!</mat-card-title>
+            </mat-card-subtitle>
+            <mat-divider inset></mat-divider>
+            <mat-card-content>
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-subtitle>Ako niste do sada ništa objavili na svom profilu podaci se neće ni prikazati.</mat-card-subtitle>
+                <mat-card-subtitle><i>Proverite da li ste se ulogoval na portal.</i></mat-card-subtitle>
+            </mat-card-content>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

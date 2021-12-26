@@ -1,0 +1,143 @@
+.show {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+}
+
+.mat-toolbar {
+    background-color: #92b7d8;
+    width: 80%;
+    margin: 1rem auto;
+    border-radius: 10px;
+    justify-content: space-around;
+}
+
+.mat-icon {
+    margin-right: 5px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1), 0 15px 35px rgba(0,0,0,0.2);
+}
+
+th {
+    background-color:rgb(154, 201, 233);
+    border: 1px solid rgb(154, 201, 233);
+    color: rgb(66, 65, 65);
+    text-align: center;
+    padding: 12px;
+    font-weight: 500;
+}
+
+td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+    color: maroon;
+}
+
+tr {
+    background-color:rgb(228, 211, 207);
+}
+
+
+tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+tr:hover {
+    background-color:rgb(236, 160, 135);
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    color: maroon;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 860px) {
+
+    .mat-toolbar {
+        width: 100%;
+    }
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr {
+        border: 1px solid #ccc; 
+        padding: 10px 0;
+    }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		/* border-bottom: 1px solid #eee;  */
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/* Label the data */
+	td:nth-of-type(1):before { content: "Naziv organizacije"; }
+	td:nth-of-type(2):before { content: "Adresa"; }
+	td:nth-of-type(3):before { content: "Oblast delovanja"; }
+	td:nth-of-type(4):before { content: "Kontakt osoba"; }
+	td:nth-of-type(5):before { content: "Telefon"; }
+	td:nth-of-type(6):before { content: "Web sajt"; }
+	td:nth-of-type(7):before { content: "Email"; }
+	td:nth-of-type(8):before { content: "Tip"; }
+
+}
+
+@media (max-width: 710px) {
+    table {
+        width: 100%;
+    }
+
+    .show {
+        padding: 0 0.5rem;
+    }
+
+    .hide {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .hide-icon {
+        display: none;
+    }
+
+    .name {
+        text-transform: uppercase;
+    }
+}

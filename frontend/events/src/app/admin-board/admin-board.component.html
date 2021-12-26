@@ -1,0 +1,114 @@
+<mat-toolbar color="primary">
+    <div class="hide">
+        <button mat-icon-button>
+            <mat-icon>admin_panel_settings</mat-icon>
+            <span>Admin Panel</span>
+        </button>
+    </div>
+
+    <span class="spacer hide"></span>
+    <button mat-button [matMenuTriggerFor]="org">
+        <mat-icon class="hide-icon">source</mat-icon>
+        <span class="name">Pregled</span>
+    </button>
+    <mat-menu #org>
+        <button mat-menu-item routerLink="/admin">
+            <mat-icon>grading</mat-icon>
+            <span>Pregled organizacija</span>
+        </button>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>post_add</mat-icon>
+            <span>Dodaj administratora</span>
+        </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="events">
+        <mat-icon class="hide-icon">event_available</mat-icon>
+        <span class="name">Događaji</span>
+    </button>
+    <mat-menu #events>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>post_add</mat-icon>
+            <span>Dodaj događaj</span>
+        </button>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>grading</mat-icon>
+            <span>Pregled događaja</span>
+        </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="survey">
+        <mat-icon class="hide-icon">analytics</mat-icon>
+        <span class="name">Ankete</span>
+    </button>
+    <mat-menu #survey>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>playlist_add_circle</mat-icon>
+            <span>Dodaj anketu</span>
+        </button>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>feed</mat-icon>
+            <span>Pregled anketa</span>
+        </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="report">
+        <mat-icon class="hide-icon">data_usage</mat-icon>
+        <span class="name">Izveštaji</span>
+    </button>
+    <mat-menu #report>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>playlist_add_circle</mat-icon>
+            <span>Kreiraj izveštaj</span>
+        </button>
+        <button mat-menu-item routerLink="/">
+            <mat-icon>feed</mat-icon>
+            <span>Pregled izveštaja</span>
+        </button>
+    </mat-menu>
+
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu>
+        <button mat-menu-item routerLink="/getUserData">
+            <mat-icon>manage_accounts</mat-icon>
+            <span>Uredi Profil</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Odjavi se</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<div class="show">
+    <h2>Pregled svih registrovanih organizacija</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Naziv organizacije</th>
+                <th>Adresa</th>
+                <th>Oblast delovanja</th>
+                <th>Kontakt osoba</th>
+                <th>Telefon</th>
+                <th>Web sajt</th>
+                <th>Email</th>
+                <th>Tip</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let org of userDataOrg">
+                <td>{{org.organization}}</td>
+                <td>{{org.street}} {{org.number}} {{org.city}}</td>
+                <td>{{org.areaactivity}}</td>
+                <td>{{org.first_name}} {{org.last_name}}</td>
+                <td>{{org.telephone}}</td>
+                <td>{{org.website}}</td>
+                <td>{{org.email}}</td>
+                <td>{{org.privilege}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-content>
+        <mat-icon>account_circle</mat-icon>
+        <h1>Prijavite se</h1>
+        <form>
+            <mat-form-field>
+                <mat-label>Korisničko ime</mat-label>
+                <input type="text" matInput placeholder="Korisničko ime" name="username" [(ngModel)]="username">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Lozinka</mat-label>
+                <input type="password" matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="btn" (click)=login()>Prijavi se</button>
+        </form>
+        <a routerLink="/resetpass">Zaboravili ste vašu lozinku?</a>
+    </mat-card-content>
+</mat-card>

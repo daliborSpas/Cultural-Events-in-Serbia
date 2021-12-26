@@ -1,0 +1,113 @@
+<app-nav></app-nav>
+<div class="show">
+    <div class="accordion">
+        <mat-accordion multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span>Kreiraj događaj</span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Popunite formu da bi uspešno kreirali vaš gogađaj
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card>
+                    <mat-card-content>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Naziv događaja</mat-label>
+                            <input matInput placeholder="Unesite naziv događaja" [formControl]="eTitle"
+                                [(ngModel)]="title" required>
+                            <mat-error *ngIf="eTitle.invalid">{{getErrorMessageForeTitle()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Opis događaja</mat-label>
+                            <input matInput placeholder="Unesite kratak opis događaja" [formControl]="eDescription"
+                                [(ngModel)]="description" required>
+                            <mat-error *ngIf="eDescription.invalid">{{getErrorMessageForeDescription()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Adresa događaja</mat-label>
+                            <input matInput placeholder="Unesite mesto, ulicu i broj" [formControl]="ePlace"
+                                [(ngModel)]="eventPlace" required>
+                            <mat-error *ngIf="ePlace.invalid">{{getErrorMessageForePlace()}}</mat-error>
+                            <mat-hint>Adresa gde se događaj održava</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Vreme odžavanja događaja</mat-label>
+                            <input matInput placeholder="Unesite vreme održavanja događaja" [formControl]="eTimeOfEvent"
+                                [(ngModel)]="timeOfEvent" required>
+                            <mat-error *ngIf="eTimeOfEvent.invalid">{{getErrorMessageForeTimeOfEvent()}}</mat-error>
+                            <mat-hint>Sat ili čas kada događaj počinje</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Prostor gde se održava događaj</mat-label>
+                            <input matInput placeholder="Unesite tip prostora (dvorana, kino, stadion, pozorište...)"
+                                [formControl]="eSpace" [(ngModel)]="eventSpace" required>
+                            <mat-error *ngIf="eSpace.invalid">{{getErrorMessageForeSpace()}}</mat-error>
+                            <mat-hint>Primer: Dvorana, Bioskop, Trg, Stadion</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Tip događaja</mat-label>
+                            <mat-select [formControl]="eType" [(ngModel)]="eventType" required>
+                                <mat-option *ngFor="let type of event_type" [value]="type">
+                                    {{type}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="eType.invalid">{{getErrorMessageForeType()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Datum održavanja</mat-label>
+                            <input matInput [matDatepicker]="picker" [formControl]="eDateOfEvent"
+                                [(ngModel)]="dateOfEvent" placeholder="Klikom na ikonicu izaberite datum"
+                                autocomplete="off" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="eDateOfEvent.invalid">{{getErrorMessageForeDateOfEvent()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Slika događaja</mat-label>
+                            <input matInput placeholder="Unesite url putanju slike" [(ngModel)]="imageUrl"
+                                autocomplete="off" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Starosna populacija</mat-label>
+                            <input matInput placeholder="Unestite ograničenje za godine npr: 16+"
+                                [formControl]="eAgeLimit" [(ngModel)]="ageLimit" required>
+                            <mat-error *ngIf="eAgeLimit.invalid">{{getErrorMessageForeAgeLimit()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Specifičnosti</mat-label>
+                            <input matInput
+                                placeholder="Cena, Kucni ljubimci dozvoljeni, Zabranjeno pušenje, Trajanje itd"
+                                [formControl]="eSpecialConditions" [(ngModel)]="specialConditions" required>
+                            <mat-hint>Primer: bez životinja, slobodan ulaz</mat-hint>
+                            <mat-error *ngIf="eSpecialConditions.invalid">{{getErrorMessageForeSpecialConditions()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width span-input" hintLabel="Maksimalno 800 karaktera"
+                            appearance="outline">
+                            <mat-label>Opišite događaja</mat-label>
+                            <textarea matInput maxlength="800" #txt placeholder="Unesite nešto o samom događaju"
+                                [formControl]="eContent" [(ngModel)]="content" required></textarea>
+                            <mat-hint align="end">{{txt.value?.length || 0}}/800</mat-hint>
+                            <mat-error *ngIf="eContent.invalid">{{getErrorMessageForeContent()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="addEvent()">Kreiraj događaj</button>
+                        </mat-card-actions>
+                    </mat-card-content>
+                </mat-card>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

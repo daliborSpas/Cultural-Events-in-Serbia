@@ -1,0 +1,113 @@
+<div class="registracija">
+    <mat-card class="reg">
+        <span>Registracija</span>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <form class="my-form">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Naziv organizacije</mat-label>
+                    <input matInput placeholder="Unesite naziv organizacija" [formControl]="orgName" name="organization" [(ngModel)]="organization" required>
+                    <mat-error *ngIf="orgName.invalid">{{getErrorMessageForOrgName()}}</mat-error>
+                </mat-form-field>
+
+                <div class="grid-2">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Ulica</mat-label>
+                        <input matInput placeholder="Unesite naziv ulice" [formControl]="orgStreet" name="street" [(ngModel)]="street" required>
+                        <mat-error *ngIf="orgStreet.invalid">{{getErrorMessageForOrgStreet()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Broj ulice</mat-label>
+                        <input matInput placeholder="Unesite broj ulice" [formControl]="orgNumber" name="number" [(ngModel)]="number" required>
+                        <mat-error *ngIf="orgNumber.invalid">{{getErrorMessageForOrgNumber()}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Mesto</mat-label>
+                    <input matInput placeholder="Unesite grad" [formControl]="orgCity" name="city" [(ngModel)]="city" required>
+                    <mat-error *ngIf="orgCity.invalid">{{getErrorMessageForOrgCity()}}</mat-error>
+                </mat-form-field>
+
+                <div class="grid-2">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Ime</mat-label>
+                        <input matInput placeholder="Unesite ime i prezime kontakt osobe" [formControl]="contactPersonName" name="first_name" [(ngModel)]="first_name" required>
+                        <mat-error *ngIf="contactPersonName.invalid">{{getErrorMessageForContactPersonName()}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Prezime</mat-label>
+                        <input matInput placeholder="Unesite ime i prezime kontakt osobe" [formControl]="contactPersonLastName" name="last_name" [(ngModel)]="last_name" required>
+                        <mat-error *ngIf="contactPersonLastName.invalid">{{getErrorMessageForContactPersonLastName()}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Kontakt telefon</mat-label>
+                    <input matInput placeholder="Unesite broj telefona" [formControl]="telNumber" name="telephone" [(ngModel)]="telephone" required>
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-error *ngIf="telNumber.invalid">{{getErrorMessageForTelNumber()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Oblast delovanja</mat-label>
+                    <mat-select [formControl]="selectArea" name="areaactivity" [(ngModel)]="areaactivity" required>
+                        <mat-option *ngFor="let area of areaActivity" [value]="area">
+                            {{area}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="selectArea.invalid">{{getErrorMessageForAreaActivity()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Veb adresa sajta</mat-label>
+                    <input matInput placeholder="primer: www.vasvebsajt.com" [formControl]="webSite" name="website" [(ngModel)]="website" required>
+                    <mat-error *ngIf="webSite.invalid">{{getErrorMessageForWebSite()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="primer: vasamejladresa@neki.com" [formControl]="eMail" name="email" [(ngModel)]="email" required>
+                    <mat-error *ngIf="eMail.invalid">{{getErrorMessageForEmail()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Korisničko ime</mat-label>
+                    <input matInput placeholder="Unesite vaše korisničko ime" [formControl]="userName" name="username" [(ngModel)]="username" required>
+                    <mat-error *ngIf="userName.invalid">{{getErrorMessageForUserName()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Lozinka</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Unesite lozinku" [formControl]="passWord" name="password" [(ngModel)]="password" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="passWord.invalid">{{getErrorMessageForPassword()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width span-input" hintLabel="Maksimalno 500 karaktera" appearance="outline">
+                    <mat-label>Tekst o organizaciji</mat-label>
+                    <textarea matInput maxlength="500" #txt placeholder="Unesite nešto o vašoj organizaciji" [formControl]="orgInfo" name="organizationInfoText" [(ngModel)]="organizationInfoText" required></textarea>
+                    <mat-hint align="end">{{txt.value?.length || 0}}/500</mat-hint>
+                    <mat-error *ngIf="orgInfo.invalid">{{getErrorMessageForOrgInfo()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <mat-checkbox class="checkbox" [formControl]="checked" color="primary" required>
+                        Saglasan sam sa uslovima korišćenja!
+                    </mat-checkbox>
+                    <mat-error *ngIf="checked.invalid"><span class="checkErr">{{getErrorMessageForChecked()}}</span></mat-error>
+                </div>
+                <div class="request-fields">
+                    <span>* obavezna polja</span>
+                </div>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="register()">Registruj se</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
